@@ -45,6 +45,10 @@
         transition: all .3s ease-in-out;
     }
 
+    .drawer.drawer-menu {
+        align-items: flex-end;
+    }
+
     .drawer.open {
         transform: translateX(0%);
     }
@@ -81,11 +85,12 @@
     <div class="drawer-overlay"  on:click={handleOverlayClick} transition:fade></div>
 {/if}
 
-<div class="drawer" class:open={drawerVisible === "menu"}>
+<div class="drawer drawer-menu" class:open={drawerVisible === "menu"}>
     <ul class="menu">
-        <li><a href=".">Item 1</a></li>
-        <li><a href=".">Item 1</a></li>
-        <li><a href=".">Item 1</a></li>
+        <li><a href="https://www.pubmeeple.com" target="_blank" rel="noopener">Pub Meeple Home</a></li>
+        <li><a href="https://topnine.pubmeeple.com" target="_blank" rel="noopener">Top Nine Generator</a></li>
+        <li><a href="https://www.pubmeeple.com/pub-meeple-podcast" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://www.pubmeeple.com/contact" target="_blank" rel="noopener">Contact</a></li>
     </ul>
 </div>
 
