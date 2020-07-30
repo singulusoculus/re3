@@ -42,7 +42,7 @@
         height: 105%;   
         z-index: 400;
         padding: 2rem 2rem 0 5rem;
-        transition: all .3s ease-in-out;
+        transition: all .5s ease-in-out;
     }
 
     .drawer.drawer-menu {
@@ -73,6 +73,10 @@
             border-radius: 3px;
             padding: 4rem 0 0 0;
         }
+
+        .drawer.drawer-menu {
+        align-items: center;
+    }
 
         .drawer.open {
             transform: translateY(0%);

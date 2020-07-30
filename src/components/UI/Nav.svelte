@@ -105,7 +105,7 @@
 
 		.logo {
 			margin-left: 1rem;
-			width: 7rem;
+			width: 9rem;
 		}
 
 		.logo.active {
@@ -126,28 +126,14 @@
 			margin-left: unset;
 		}
 
-		
-		/* .site-nav {
-			display: none;
-			position: absolute;
-			top: 65px;
-			background-color: #181818;
-			width: 100%;
-			justify-content: center;
-			z-index: 10;
-		}
-
-		nav {
-			justify-content: center;
-		}
-
-		.logo-wrapper {
-			z-index: 50;
-		}
-
 		.logo {
-			margin-top: 5px;
-		} */
+			width: 8rem;
+		}
+
+		.material-icons {
+			font-size: 30px;
+		}
+
 	}
 
 </style>
