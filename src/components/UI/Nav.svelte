@@ -63,7 +63,17 @@
 		background: var(--color-primary);
 		border-radius: 3px;
 		box-shadow: 5px 0 5px -5px rgba(0,0,0,1);
-		transition: all .3s;
+		transition: all .4s;
+	}
+
+	.site-nav > div:not(.active):hover {
+		box-shadow: var(--shadow-dark);
+		transform: translateY(-2px);
+	}
+
+	.site-nav > div:not(.active):active {
+		box-shadow: var(--shadow-dark);
+		transform: translateY(-1px);
 	}
 
 	.site-nav > div.active {
