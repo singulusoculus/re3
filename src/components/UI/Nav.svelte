@@ -92,6 +92,10 @@
 	@media only screen and (max-width: 960px) {
 		.nav-wrapper {
 			width: unset;
+			position: fixed;
+			bottom: -1px;
+			width: 100%;
+			z-index: 500;
 		}
 
 		nav {
@@ -99,6 +103,8 @@
 			width: 100%;
 			height: 45px;
 			position: relative;
+			box-shadow: 4px -4px 5px 0 rgba(0,0,0,0.30);
+
 		}
 
 		.site-nav {
@@ -108,18 +114,19 @@
 
 		.site-nav > div {
 			margin-bottom: 0;
-			margin-top: 3rem;
+			margin-bottom: 3rem;
 			margin-left: 7rem;
-			box-shadow: 0 5px 5px -5px rgba(0,0,0,1);
+			box-shadow: 0 -5px 5px -5px rgba(0,0,0,1);
 		}
 
 		.logo {
 			margin-left: 1rem;
-			width: 9rem;
+			width: 7rem;
+			margin-top: -3rem;
 		}
 
 		.logo.active {
-		transform: translateY(2rem);
+		transform: translateY(-2rem);
 		}
 	}
 
@@ -134,10 +141,18 @@
 
 		.site-nav > div {
 			margin-left: unset;
+			margin-bottom: 3rem;
+			box-shadow: 0px -5px 5px -5px rgba(0,0,0,1);
+
 		}
 
 		.logo {
-			width: 8rem;
+			width: 7rem;
+			margin-top: -2rem;
+		}
+
+		.logo.active {
+			transform: translateY(-2rem);
 		}
 
 		.material-icons {

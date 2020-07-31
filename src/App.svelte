@@ -40,6 +40,8 @@
 <style>
 	.page-wrapper {
 		display: flex;
+    justify-content: space-between;
+    min-height: 100vh;
 	}
 
 	main {
@@ -51,6 +53,7 @@
   
   .section-wrapper {
     margin-top: 2rem;
+    margin-bottom: auto;
   }
 
 	@media only screen and (max-width: 960px) {
@@ -62,6 +65,17 @@
 			margin: 5rem 1rem 1rem 1rem;
     }
 	}
+
+  @media only screen and (max-width: 960px) {
+    .page-wrapper {
+			flex-direction: column-reverse;
+		} 
+    
+    main {
+      margin: 1rem 1rem 3rem 1rem;
+    }
+
+  }
 
 
 </style>

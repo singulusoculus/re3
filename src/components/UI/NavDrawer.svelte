@@ -43,6 +43,7 @@
         z-index: 400;
         padding: 2rem 2rem 0 5rem;
         transition: all .5s ease-in-out;
+        overflow: visible;
     }
 
     .drawer.drawer-menu {
@@ -66,10 +67,10 @@
     @media only screen and (max-width: 960px) {
         .drawer {
             height: unset;
-            min-height: 350px;
+            min-height: 100%;
             min-width: 100%;
             margin-top: 4rem;
-            transform: translateY(-100%);
+            transform: translateY(200%);
             border-radius: 3px;
             padding: 4rem 0 0 0;
         }
@@ -79,7 +80,7 @@
     }
 
         .drawer.open {
-            transform: translateY(0%);
+            transform: translateY(0);
         }
     }
 
