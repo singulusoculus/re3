@@ -42,7 +42,7 @@
         height: 105%;   
         z-index: 400;
         padding: 2rem 2rem 0 5rem;
-        transition: all .5s ease-in-out;
+        transition: all .6s ease-in-out;
         overflow: visible;
     }
 
@@ -80,7 +80,7 @@
     }
 
         .drawer.open {
-            transform: translateY(0);
+            transform: translateY(20%);
         }
     }
 

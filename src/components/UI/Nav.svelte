@@ -38,7 +38,7 @@
 		margin-left: 15px;
 		background-color: #FFF;
 		box-shadow: 4px 4px 5px 0 rgba(0,0,0,0.30);
-		transition: all .3s ease-in-out;
+		transition: all .4s ease-in-out;
 		transition-delay: .1s;
 	}
 
@@ -58,12 +58,13 @@
 	.site-nav > div {
 		margin-bottom: 3rem;
 		position: relative;
-		margin-left: 3rem;
+		/* margin-left: 3rem; */
 		padding: 7px 3px 3px 5px;;
 		background: var(--color-primary);
 		border-radius: 3px;
-		box-shadow: 5px 0 5px -5px rgba(0,0,0,1);
+		/* box-shadow: 5px 0 5px -5px rgba(0,0,0,1); */
 		transition: all .4s;
+		transition-delay: .1s;
 	}
 
 	.site-nav > div:not(.active):hover {
@@ -79,6 +80,7 @@
 	.site-nav > div.active {
 		background-color: #FFF;
 		box-shadow: unset;
+		transform: translateX(2rem);
 	}
 
 	.site-nav > div.active > .material-icons {
@@ -101,7 +103,7 @@
 		nav {
 			flex-direction: row;
 			width: 100%;
-			height: 45px;
+			height: 55px;
 			position: relative;
 			box-shadow: 4px -4px 5px 0 rgba(0,0,0,0.30);
 
@@ -114,9 +116,13 @@
 
 		.site-nav > div {
 			margin-bottom: 0;
-			margin-bottom: 3rem;
+			/* margin-bottom: 3rem; */
 			margin-left: 7rem;
-			box-shadow: 0 -5px 5px -5px rgba(0,0,0,1);
+			/* box-shadow: 0 -5px 5px -5px rgba(0,0,0,1); */
+		}
+
+		.site-nav > div.active {
+			transform: translateY(-2rem);
 		}
 
 		.logo {
@@ -126,7 +132,12 @@
 		}
 
 		.logo.active {
-		transform: translateY(-2rem);
+			transform: translateY(-2rem);
+		}
+
+		.site-nav > div:not(.active):active {
+			box-shadow: unset;
+			transform: unset;
 		}
 	}
 
@@ -141,9 +152,13 @@
 
 		.site-nav > div {
 			margin-left: unset;
-			margin-bottom: 3rem;
-			box-shadow: 0px -5px 5px -5px rgba(0,0,0,1);
+			/* margin-bottom: 3rem;
+			box-shadow: 0px -5px 5px -5px rgba(0,0,0,1); */
 
+		}
+
+		.site-nav > div.active {
+			transform: translateY(-3rem);
 		}
 
 		.logo {
