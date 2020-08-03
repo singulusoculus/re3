@@ -3,10 +3,10 @@
   import StepNav from './components/UI/StepNav.svelte'
   import { step } from './components/stores/currentStep.js'
   import stepsEnabled from './components/stores/stepStatus.js'
-  import StepStart from './components/UI/StepStart.svelte'
-  import StepList from './components/UI/StepList.svelte'
-  import StepRank from './components/UI/StepRank.svelte'
-  import StepResult from './components/UI/StepResult.svelte'
+  import StepStart from './components/steps/StepStart.svelte'
+  import StepList from './components/steps/StepList.svelte'
+  import StepRank from './components/steps/StepRank.svelte'
+  import StepResult from './components/steps/StepResult.svelte'
 
 
 

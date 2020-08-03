@@ -12,6 +12,12 @@ html {
   height: -webkit-fill-available;
 }
 
+@media only screen and (max-width: 960px) {
+  html {
+    font-size: 55%; 
+  }
+}
+
 @media only screen and (max-width: 550px) {
   html {
     font-size: 48%; 
