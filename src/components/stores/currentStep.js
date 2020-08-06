@@ -1,3 +1,5 @@
 import { writable } from 'svelte/store'
 
-export const step = writable('start')
+const step = writable('start')
+
+export default step

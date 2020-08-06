@@ -52,7 +52,7 @@
 </style>
 
 {#if linkref}
-<a href="{linkref}" target="_blank">
+<a href="{linkref}" target="_blank" rel="noopener">
     <button type="button"  disabled={disabled}>
         <span>{text}</span>
         <i class="material-icons">

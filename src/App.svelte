@@ -1,18 +1,11 @@
 <script lang="ts">
   import Nav from './components/UI/Nav.svelte'
   import StepNav from './components/UI/StepNav.svelte'
-  import { step } from './components/stores/currentStep.js'
-  import stepsEnabled from './components/stores/stepStatus.js'
-  import StepStart from './components/steps/StepStart.svelte'
-  import StepList from './components/steps/StepList.svelte'
-  import StepRank from './components/steps/StepRank.svelte'
-  import StepResult from './components/steps/StepResult.svelte'
-
-
-
-	const handleStepClick = (value) => {
-		step.set(value.detail)
-	}
+  import step from './components/stores/currentStep.js'
+  import StepStart from './components/Start/StepStart.svelte'
+  import StepList from './components/List/StepList.svelte'
+  import StepRank from './components/Rank/StepRank.svelte'
+  import StepResult from './components/Result/StepResult.svelte'
 
 </script>
 
@@ -20,7 +13,7 @@
   <Nav />
 
 	<main>
-    <StepNav currentStep={$step} stepsEnabled={$stepsEnabled} on:stepClick={handleStepClick} />
+    <StepNav />
 
     <div class="section-wrapper">
       {#if $step === 'start'}

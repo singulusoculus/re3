@@ -42,9 +42,9 @@
 		transition-delay: .1s;
 	}
 
-	.logo.active {
+	/* .logo.active {
 		transform: translateX(2rem);
-	}
+	} */
 
 	.site-nav {
 		display: flex;
@@ -131,9 +131,9 @@
 			margin-top: -3rem;
 		}
 
-		.logo.active {
+		/* .logo.active {
 			transform: translateY(-2rem);
-		}
+		} */
 
 		.site-nav > div:not(.active):active {
 			box-shadow: unset;
@@ -166,9 +166,9 @@
 			margin-top: -2rem;
 		}
 
-		.logo.active {
+		/* .logo.active {
 			transform: translateY(-2rem);
-		}
+		} */
 
 		.material-icons {
 			font-size: 30px;

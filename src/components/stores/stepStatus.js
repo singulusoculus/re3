@@ -19,6 +19,9 @@ const customStepsEnabled = {
             return steps
         })
     },
+    enableStart: () => {
+        stepsEnabled.set({start:true, list:false, rank:false, result:false})
+    },
     enableList: () => {
         stepsEnabled.set({start:true, list:true, rank:false, result:false})
     },

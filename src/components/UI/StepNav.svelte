@@ -1,16 +1,20 @@
 <script lang="ts">
     import { createEventDispatcher } from 'svelte';
-    import { step } from '../stores/currentStep';
-    import enabledStore from '../stores/stepStatus'
+    import currentStep  from '../stores/currentStep';
+    import enabledSteps from '../stores/stepStatus';
 
     const dispatch = createEventDispatcher();
 
-    export let currentStep: string;
-    export let stepsEnabled
+    // let enabledSteps = enabledStepsStore
+    // let currentStep = currentStepStore
 
     const handleStepClick = (step) => {
-        if(stepsEnabled[step]) {
-            dispatch('stepClick', step)
+        if($enabledSteps[step]) {
+            currentStep.set(step)
+        }
+
+        if(step === 'start') {
+            enabledSteps.enableStart()
         }
     }
 
@@ -161,10 +165,10 @@
 
 <div class="step-nav-wrapper">
     <nav>
-        <a href="#" class:current={currentStep === 'start'} on:click={() => handleStepClick('start')}>Start</a>
-        <a href="#" class:disabled={!stepsEnabled.list} class:current={currentStep === 'list'} on:click={() => handleStepClick('list')}>List</a>
-        <a href="#" class:disabled={!stepsEnabled.rank} class:current={currentStep === 'rank'} on:click={() => handleStepClick('rank')}>Rank</a>
-        <a href="#" class:disabled={!stepsEnabled.result} class:current={currentStep === 'result'} on:click={() => handleStepClick('result')}>Result</a>
+        <a href="#" class:current={$currentStep === 'start'} on:click={() => handleStepClick('start')}>Start</a>
+        <a href="#" class:disabled={!$enabledSteps.list} class:current={$currentStep === 'list'} on:click={() => handleStepClick('list')}>List</a>
+        <a href="#" class:disabled={!$enabledSteps.rank} class:current={$currentStep === 'rank'} on:click={() => handleStepClick('rank')}>Rank</a>
+        <a href="#" class:disabled={!$enabledSteps.result} class:current={$currentStep === 'result'} on:click={() => handleStepClick('result')}>Result</a>
         <div class="indicator"></div>
     </nav>
 </div>
