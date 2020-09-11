@@ -10,11 +10,10 @@
     import Loading from '../UI/Loading.svelte'
 
     import { fade, fly } from 'svelte/transition'
-    import { afterUpdate } from 'svelte';
     import listStore from './list-store.js'
-    import { getBGGCollection } from './bgg-fetch'
+    import { getBGGData } from './bgg-fetch'
     import { sortListData } from './common'
-    import { processImage } from './top-nine.js'
+    import uuidv4 from 'uuid'
 
 
     export let list = []
@@ -108,6 +107,84 @@
 
     const handleFilterChange = () => {
         filteredList = filterBGGCollection(list)
+    }
+
+    // Collection Functions
+    const getBGGCollection = (user, expansions) => new Promise(async (resolve, reject) => {
+        // disable submit button
+
+        let queryUrl = `https://www.boardgamegeek.com/xmlapi2/collection?username=${user}&stats=1`
+
+        if (!expansions) {
+            queryUrl += '&excludesubtype=boardgameexpansion'
+        }
+            let bggList
+
+            try {
+            let results = await getBGGData(queryUrl)   
+            bggList = createBGGCollectionList(results)
+        
+            queryUrl += '&played=1'
+            let playedResults = await getBGGData(queryUrl)
+            let played = createBGGCollectionList(playedResults)
+        
+            played.forEach((item) => {
+                bggList.push(item)
+            })
+        
+            bggList = bggList.filter((list, index, self) => self.findIndex(l => l.bggId === list.bggId) === index)
+            resolve(bggList)
+            } catch (err) {
+            console.log(err);
+            reject(err)
+            }
+
+
+    }) 
+
+    const createBGGCollectionList = (data) => {
+        let items = data
+        let bggList = []
+
+        if (!Array.isArray(items)) {
+            items = [items]
+        }
+
+        items.forEach((item) => {
+            const statusAttributes = item.status['@attributes']
+
+            const obj = {
+            id: uuidv4(),
+            name: item.name ? item.name['#text'] : 'No Title',
+            source: 'bgg-collection',
+            // sourceType: 'collection',
+            imageOriginal: item.image ? item.image['#text'] : '',
+            image: item.thumbnail ? item.thumbnail['#text'] : '',
+            processedImage: '',
+            // yearPublished: item.yearpublished ? parseInt(item.yearpublished['#text']) : 0,
+            bggId: item['@attributes'].objectid,
+            own: statusAttributes.own === '1',
+            fortrade: statusAttributes.fortrade === '1',
+            prevowned: statusAttributes.prevowned === '1',
+            want: statusAttributes.want === '1',
+            wanttobuy: statusAttributes.wanttobuy === '1',
+            wanttoplay: statusAttributes.wanttoplay === '1',
+            wishlist: statusAttributes.wishlist === '1',
+            played: item.numplays['#text'] > 0,
+            plays: item.numplays['#text'],
+            rated: item.stats['rating']['@attributes'].value !== 'N/A',
+            rating: item.stats['rating']['@attributes'].value === 'N/A' ? 0 : parseInt(item.stats['rating']['@attributes'].value),
+            addedToList: false
+            }
+
+            // if (listData.map(e => e.bggId).indexOf(obj.bggId) > -1) {
+            // obj.addedToList = true
+            // }
+
+            bggList.push(obj)
+        })
+
+        return bggList
     }
 
 </script>
