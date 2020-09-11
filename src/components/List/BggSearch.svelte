@@ -9,7 +9,6 @@
 
     import listStore from './list-store.js' 
     import { getBGGData } from './bgg-fetch.js'
-    import { processImage } from './top-nine'
     import { sortListData } from './common'
     import uuidv4 from 'uuid'
 
@@ -18,6 +17,7 @@
     let searchType = 'boardgames'
     let hasSearchResults = false
     let sortBy = 'bgg-rank' 
+
     const radioButtons = [
         {
             id: 'boardgames',
@@ -32,6 +32,7 @@
             selected: false
         }
     ]
+    
     let isLoading = false
 
     $: filteredList = list.filter(l => l.source === 'bgg-search' && !l.addedToList)
@@ -39,19 +40,7 @@
     $: totalAdded = list.filter(l => l.addedToList).length
 
     const addListItem = (event) => {
-        if (totalAdded !== 9) {
-            listStore.addListItem(event.detail)
-
-            setTimeout(async () => {
-                const item = $listStore.filter(i => i.id === event.detail)[0]
-                if (!item.processedImage) {
-                    const processedImage = await processImage(event.detail, item.imageOriginal)
-                    listStore.updateImage(event.detail, processedImage)
-                }
-            }, 1000)
-        } else {
-            alert('You already have 9 games.')
-        }
+        listStore.addListItem(event.detail)
     }
 
     const handleBGGSearchRequest = async () => {
