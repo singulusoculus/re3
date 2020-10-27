@@ -12,7 +12,6 @@
     import { fade, fly } from 'svelte/transition'
     import listStore from './list-store.js'
     import { getBGGData } from './bgg-fetch'
-    import { sortListData } from './common'
     import uuidv4 from 'uuid'
 
 
@@ -71,8 +70,20 @@
         data = data.filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase()))
 
         // Sort
-        data = sortListData(data, 'alphabetical')
+        data = sortListByAlpha(data)
         return data
+    }
+
+    const sortListByAlpha = (list) => {
+        return list.sort((a, b) => {
+        if (a.name.toLowerCase() < b.name.toLowerCase()) {
+          return -1
+        } else if (a.name.toLowerCase() > b.name.toLowerCase()) {
+          return 1
+        } else {
+          return 0
+        }
+      })
     }
 
 	const addListItem = async (event) => {

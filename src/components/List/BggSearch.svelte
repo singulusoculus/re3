@@ -9,7 +9,6 @@
 
     import listStore from './list-store.js' 
     import { getBGGData } from './bgg-fetch.js'
-    import { sortListData } from './common'
     import uuidv4 from 'uuid'
 
     export let list = []
@@ -115,10 +114,22 @@
         })
 
         let gameDetails = await getBGGGameDetailData(bggIds)
-        gameDetails = sortListData(gameDetails, 'bgg-rank')
+        gameDetails = sortListByRank(gameDetails)
 
         resolve(gameDetails)
     });
+
+    const sortListByRank = (list) => {
+        return list.sort((a, b) => {
+        if (a.bggRank > b.bggRank) {
+          return 1
+        } else if (a.bggRank < b.bggRank) {
+          return -1
+        } else {
+          return 0
+        }
+      })
+    }
 
     const getBGGGameDetailData = (bggIds) => {
         return new Promise(async (resolve, reject) => {
