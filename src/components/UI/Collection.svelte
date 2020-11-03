@@ -1,6 +1,6 @@
 <script>
     import { createEventDispatcher } from 'svelte'
-    import {send, receive} from '../List/crossfade.js';
+    import {send, receive} from '../../js/crossfade.js';
     import { flip } from 'svelte/animate'
     import { fade } from 'svelte/transition'
 
@@ -65,7 +65,9 @@
     {#each games as item (item.id)}
     <li class="collection-item" out:send="{{key: item.id}}" in:receive="{{key: item.id}}" animate:flip="{{duration: 200}}">
         <div class="image-container">
+            {#if item.image}
             <img alt="{item.name}" class="image" src="{item.image}">
+            {/if}
         </div>
         <span class="title">{item.name}</span>
         {#if icon}

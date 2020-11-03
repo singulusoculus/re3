@@ -7,8 +7,8 @@
     import RadioButtons from '../UI/RadioButtons.svelte'
     import Loading from '../UI/Loading.svelte'
 
-    import listStore from './list-store.js' 
-    import { getBGGData } from './bgg-fetch.js'
+    import listStore from '../../stores/list-store.js' 
+    import { getBGGData } from '../../js/bgg-fetch.js'
     import uuidv4 from 'uuid'
 
     export let list = []
@@ -56,7 +56,7 @@
 
         // gameDetails = await getBGGSearchResults(localSearchText, exactSearch, searchType)
 
-        listStore.addSearchData(await getBGGSearchResults(localSearchText, exactSearch, searchType))
+        listStore.addListData(await getBGGSearchResults(localSearchText, exactSearch, searchType))
 
         isLoading = false
         hasSearchResults = true

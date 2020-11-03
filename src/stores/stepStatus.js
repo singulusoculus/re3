@@ -14,7 +14,6 @@ const customStepsEnabled = {
     },
     toggleStep: (step) => {
         stepsEnabled.update(steps => {
-            console.log(steps);
             steps[step] = !steps[step]
             return steps
         })
@@ -30,6 +29,18 @@ const customStepsEnabled = {
     },
     enableResult: () => {
         stepsEnabled.set({start:true, list:true, rank:true, result:true})
+    },
+    disableStep: (step) => {
+        stepsEnabled.update(steps => {
+            steps[step] = false
+            return steps
+        })
+    },
+    enableStep: (step) => {
+        stepsEnabled.update(steps => {
+            steps[step] = true
+            return steps
+        })
     }
 }
 

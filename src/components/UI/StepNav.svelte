@@ -1,7 +1,8 @@
 <script lang="ts">
     import { createEventDispatcher } from 'svelte';
-    import currentStep  from '../stores/currentStep';
-    import enabledSteps from '../stores/stepStatus';
+    import currentStep  from '../../stores/currentStep';
+    import enabledSteps from '../../stores/stepStatus';
+    import listStore from '../../stores/list-store'
 
     const dispatch = createEventDispatcher();
 
@@ -15,6 +16,7 @@
 
         if(step === 'start') {
             enabledSteps.enableStart()
+            listStore.clearStore()
         }
     }
 
@@ -36,11 +38,12 @@
         box-shadow: 0 2px 3px 0 rgba(0,0,0,0.5);
     }
 
-    nav a {
+    nav span {
         font-size: 1.5rem;
         text-transform: uppercase;
         color: white;
-        text-decoration: none;
+        /* text-decoration: none; */
+        cursor: pointer;
         line-height: 5rem;
         position: relative;
         z-index: 1;
@@ -61,38 +64,38 @@
         transition: all .5s ease 0s;
     }
 
-    a:nth-child(1) {
+    span:nth-child(1) {
         width: 12.5rem;
     }
 
-    nav a:nth-child(1).current~.indicator {
+    nav span:nth-child(1).current~.indicator {
         width: 12.5rem;
         left: 0;
     }
 
-    a:nth-child(2) {
+    span:nth-child(2) {
         width: 12.5rem;
     }
 
-    nav a:nth-child(2).current~.indicator {
+    nav span:nth-child(2).current~.indicator {
         width: 12.5rem;
         left: 12.5rem;
     }
 
-    a:nth-child(3) {
+    span:nth-child(3) {
         width: 12.5rem;
     }
 
-    nav a:nth-child(3).current~.indicator {
+    nav span:nth-child(3).current~.indicator {
         width: 12.5rem;
         left: 25rem;
     }
 
-    a:nth-child(4) {
+    span:nth-child(4) {
         width: 12.5rem;
     }
 
-    nav a:nth-child(4).current~.indicator {
+    nav span:nth-child(4).current~.indicator {
         width: 12.5rem;
         left: 37.5rem;
     }
@@ -113,38 +116,38 @@
             height: .3rem;
         }
 
-        a:nth-child(1) {
+        span:nth-child(1) {
             width: 25%;
         }
 
-        nav a:nth-child(1).current~.indicator {
+        nav span:nth-child(1).current~.indicator {
             width: 25%;
             left: 0;
         }
 
-        a:nth-child(2) {
+        span:nth-child(2) {
             width: 25%;
         }
 
-        nav a:nth-child(2).current~.indicator {
+        nav span:nth-child(2).current~.indicator {
             width: 25%;
             left: 25%;
         }
 
-        a:nth-child(3) {
+        span:nth-child(3) {
             width: 25%;
         }
 
-        nav a:nth-child(3).current~.indicator {
+        nav span:nth-child(3).current~.indicator {
             width: 25%;
             left: 50%;
         }
 
-        a:nth-child(4) {
+        span:nth-child(4) {
             width: 25%;
         }
 
-        nav a:nth-child(4).current~.indicator {
+        nav span:nth-child(4).current~.indicator {
             width: 25%;
             left: 75%;
         }
@@ -165,10 +168,10 @@
 
 <div class="step-nav-wrapper">
     <nav>
-        <a href="#" class:current={$currentStep === 'start'} on:click={() => handleStepClick('start')}>Start</a>
-        <a href="#" class:disabled={!$enabledSteps.list} class:current={$currentStep === 'list'} on:click={() => handleStepClick('list')}>List</a>
-        <a href="#" class:disabled={!$enabledSteps.rank} class:current={$currentStep === 'rank'} on:click={() => handleStepClick('rank')}>Rank</a>
-        <a href="#" class:disabled={!$enabledSteps.result} class:current={$currentStep === 'result'} on:click={() => handleStepClick('result')}>Result</a>
+        <span  class:current={$currentStep === 'start'} on:click={() => handleStepClick('start')}>Start</span>
+        <span  class:disabled={!$enabledSteps.list} class:current={$currentStep === 'list'} on:click={() => handleStepClick('list')}>List</span>
+        <span  class:disabled={!$enabledSteps.rank} class:current={$currentStep === 'rank'} on:click={() => handleStepClick('rank')}>Rank</span>
+        <span  class:disabled={!$enabledSteps.result} class:current={$currentStep === 'result'} on:click={() => handleStepClick('result')}>Result</span>
         <div class="indicator"></div>
     </nav>
 </div>

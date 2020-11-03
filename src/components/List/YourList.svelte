@@ -2,12 +2,14 @@
     import Collapsible from '../UI/Collapsible.svelte'
     import Collection from '../UI/Collection.svelte'
     import Button from '../UI/Button.svelte'
-    import listStore from './list-store.js'
+    import listStore from '../../stores/list-store.js'
+    import enabledStore from '../../stores/stepStatus'
 
 
     export let list = []
 
     $: addedList = list.filter(i => i.addedToList)
+    $: addedList.length === 0 ? enabledStore.disableStep('rank') : enabledStore.enableStep('rank')
 
     const removeListItem = (event) => {
         listStore.removeListItem(event.detail)

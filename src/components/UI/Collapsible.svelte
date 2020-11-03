@@ -1,5 +1,5 @@
 <script>
-    import { slide, scale } from 'svelte/transition'
+    import { slide } from 'svelte/transition'
 
     export let icon = "bookmark_border"
     export let title = "Title"
@@ -61,7 +61,7 @@
     </div>
 
     {#if isOpen}
-    <div class="body" transition:slide>
+    <div class="body" transition:slide|local>
         <slot>This is some body text</slot>
     </div>
     {/if}

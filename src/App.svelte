@@ -1,11 +1,12 @@
 <script lang="ts">
   import Nav from './components/UI/Nav.svelte'
   import StepNav from './components/UI/StepNav.svelte'
-  import step from './components/stores/currentStep.js'
+  import step from './stores/currentStep.js' 
   import StepStart from './components/Start/StepStart.svelte'
   import StepList from './components/List/StepList.svelte'
   import StepRank from './components/Rank/StepRank.svelte'
   import StepResult from './components/Result/StepResult.svelte'
+  import { fly, fade } from 'svelte/transition'
 
 </script>
 
@@ -15,15 +16,23 @@
 	<main>
     <StepNav />
 
-    <div class="section-wrapper">
+    <div class="section-wrapper" in:fade>
       {#if $step === 'start'}
-        <StepStart />
+        <div out:fade="{{ duration:400 }}" in:fly="{{ delay: 500, duration:600, y: 50, opacity: 0 }}">
+          <StepStart />
+        </div>
       {:else if $step === 'list'}
-        <StepList />
+        <div out:fade="{{ duration:400 }}" in:fly="{{ delay: 500, duration:600, y: 50, opacity: 0 }}">
+          <StepList />
+        </div>
       {:else if $step === 'rank'}
-        <StepRank />
+        <div out:fade="{{ duration:400 }}" in:fly="{{ delay: 500, duration:600, y: 50, opacity: 0 }}">
+          <StepRank />
+        </div>
       {:else if $step === 'result'}
-        <StepResult />
+        <div out:fade="{{ duration:400 }}" in:fly="{{ delay: 500, duration:600, y: 50, opacity: 0 }}">
+          <StepResult />
+        </div>
       {/if}
     </div>
 	</main>

@@ -1,8 +1,8 @@
 <script>
     import Select from '../../components/UI/Select.svelte'
-    import { category } from '../stores/category.js'
-    import step from '../stores/currentStep';
-    import enabledStore from '../stores/stepStatus';
+    import { category } from '../../stores/category.js'
+    import step from '../../stores/currentStep';
+    import enabledStore from '../../stores/stepStatus';
 
     const browserDefault = true
 
@@ -18,7 +18,7 @@
         },
         {
             value: 2,
-            name: 'Boardgames'
+            name: 'Board Games'
         },
     ]
 

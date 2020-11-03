@@ -10,8 +10,8 @@
     import Loading from '../UI/Loading.svelte'
 
     import { fade, fly } from 'svelte/transition'
-    import listStore from './list-store.js'
-    import { getBGGData } from './bgg-fetch'
+    import listStore from '../../stores/list-store.js'
+    import { getBGGData } from '../../js/bgg-fetch'
     import uuidv4 from 'uuid'
 
 
@@ -101,7 +101,7 @@
         } else {
             isLoading = true
             try {
-                listStore.addBGGCollection(await getBGGCollection(bggUserName, getExpansions))
+                listStore.addListData(await getBGGCollection(bggUserName, getExpansions))
                 isLoading = false
                 hasCollection = true
             } catch(err) {

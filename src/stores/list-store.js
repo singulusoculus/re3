@@ -33,7 +33,7 @@ const customListStore = {
         })
         order--
     },
-    addBGGCollection: (data) => {
+    addListData: (data) => {
         list.update(items => {
             return [ ...data, ...items ]
         })
@@ -41,11 +41,6 @@ const customListStore = {
     resetBGGCollection: () => {
         list.update(items => {
             return items.filter(i => !i.source === 'bgg-collection' || i.addedToList || i.source === 'bgg-search')
-        })
-    },
-    addSearchData: (data) => {
-        list.update(items => {
-            return [ ...data, ...items ]
         })
     },
     resetSearchData: () => {
@@ -63,6 +58,9 @@ const customListStore = {
             })
             return items
         })
+    },
+    clearStore: () => {
+        list.set([])
     },
     updateOrder: (oldOrder, newOrder) => {
         list.update(items => {
