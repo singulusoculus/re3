@@ -3,7 +3,7 @@
     import TextInput from '../UI/TextInput.svelte'
     import Button from '../UI/Button.svelte'
     import { category } from '../../stores/category'
-    import listStore from '../../stores/list-store.js' 
+    import listStore from '../../stores/listStore.js' 
     import uuidv4 from 'uuid'
 
     let categoryValue = $category.value

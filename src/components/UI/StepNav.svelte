@@ -2,7 +2,7 @@
     import { createEventDispatcher } from 'svelte';
     import currentStep  from '../../stores/currentStep';
     import enabledSteps from '../../stores/stepStatus';
-    import listStore from '../../stores/list-store'
+    import listStore from '../../stores/listStore'
 
     const dispatch = createEventDispatcher();
 

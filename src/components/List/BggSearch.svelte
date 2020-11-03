@@ -7,7 +7,7 @@
     import RadioButtons from '../UI/RadioButtons.svelte'
     import Loading from '../UI/Loading.svelte'
 
-    import listStore from '../../stores/list-store.js' 
+    import listStore from '../../stores/listStore.js' 
     import { getBGGData } from '../../js/bgg-fetch.js'
     import uuidv4 from 'uuid'
 

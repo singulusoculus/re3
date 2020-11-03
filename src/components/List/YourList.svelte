@@ -2,7 +2,7 @@
     import Collapsible from '../UI/Collapsible.svelte'
     import Collection from '../UI/Collection.svelte'
     import Button from '../UI/Button.svelte'
-    import listStore from '../../stores/list-store.js'
+    import listStore from '../../stores/listStore.js'
     import enabledStore from '../../stores/stepStatus'
 
 

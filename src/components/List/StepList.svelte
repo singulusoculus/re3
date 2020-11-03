@@ -4,7 +4,7 @@
 	import BggSearch from './BggSearch.svelte'
 	// import YourListGrid from './List/YourListGrid.svelte'
 	import TextEntry from './TextEntry.svelte'
-	import list from '../../stores/list-store.js'
+	import list from '../../stores/listStore.js'
 	import { category } from '../../stores/category'
 
 	const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)

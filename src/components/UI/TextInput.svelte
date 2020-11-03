@@ -124,11 +124,10 @@
         line-height: normal;
         overflow-y: hidden;
         padding: .8rem 0 .8rem 0;
-        /* resize: none; */
+        resize: none;
         min-height: 3rem;
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
-        /* height: 45px; */
         overflow: auto;
     }
 
